@@ -19,6 +19,12 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.3.13](https://github.com/perfect-panel/frontend/compare/v1.3.12...v1.3.13) (2026-03-07)
+
+### 🐛 Bug Fixes / 问题修复
+
+* **user:** show expire time & improve renewal dialog on mobile ([#22](https://github.com/perfect-panel/frontend/issues/22)) ([889dbf9](https://github.com/perfect-panel/frontend/commit/889dbf97736252d54d3e1d7ed0622e91ee4e8a1e))
+
 ## [1.3.12](https://github.com/perfect-panel/frontend/compare/v1.3.11...v1.3.12) (2026-02-26)
 
 ### 🐛 Bug Fixes / 问题修复
