@@ -19,6 +19,12 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.4.0](https://github.com/perfect-panel/frontend/compare/v1.3.15...v1.4.0) (2026-03-13)
+
+### ✨ Features / 新功能
+
+* **servers:** add Reality support for anytls; fix vless flow ([be24ba0](https://github.com/perfect-panel/frontend/commit/be24ba03f564181d2bd6bc611917004d24e21aee))
+
 ## [1.3.15](https://github.com/perfect-panel/frontend/compare/v1.3.14...v1.3.15) (2026-03-12)
 
 ### 🐛 Bug Fixes / 问题修复
