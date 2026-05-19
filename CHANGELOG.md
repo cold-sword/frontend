@@ -19,6 +19,18 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.5.2](https://github.com/perfect-panel/frontend/compare/v1.5.1...v1.5.2) (2026-05-19)
+
+### 🐛 Bug Fixes / 问题修复
+
+* **admin:** remove custom_html injection from admin panel root ([0277e4a](https://github.com/perfect-panel/frontend/commit/0277e4ae3882b17ab45fcbec27c18c38d92f023c)), closes [#56](https://github.com/perfect-panel/frontend/issues/56)
+* **announcement:** remove incorrect pinned/popup false filters on announcement list page ([7dac476](https://github.com/perfect-panel/frontend/commit/7dac476b99d01a46e918c4fdbd4d8377a04885f6)), closes [#49](https://github.com/perfect-panel/frontend/issues/49)
+* **nodes:** normalize null tags to [] in node-form to prevent Invalid input error ([33ad713](https://github.com/perfect-panel/frontend/commit/33ad713f25b9e1193462ae641d4c6e97f4056dbd)), closes [#51](https://github.com/perfect-panel/frontend/issues/51)
+* **nodes:** reset edit form with initial values on open ([b8e19b5](https://github.com/perfect-panel/frontend/commit/b8e19b5fca9a0007fbb99c4e4929ba3080bd1f7e)), closes [#51](https://github.com/perfect-panel/frontend/issues/51)
+* resolve TypeScript generics incompatibility in node-form ([e6d6c68](https://github.com/perfect-panel/frontend/commit/e6d6c68596f216781946010627b7b02286445329))
+* show error toast on auth form submission failure ([a40d109](https://github.com/perfect-panel/frontend/commit/a40d109a3cb664864811973a651e12256f5968cc)), closes [#57](https://github.com/perfect-panel/frontend/issues/57)
+* **types:** make pinned and popup optional in QueryAnnouncementParams ([eae4334](https://github.com/perfect-panel/frontend/commit/eae4334d5f77be339d64f6f4290a5604256aa7c4))
+
 ## [1.5.1](https://github.com/perfect-panel/frontend/compare/v1.5.0...v1.5.1) (2026-05-19)
 
 ### 🐛 Bug Fixes / 问题修复
