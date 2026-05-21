@@ -19,6 +19,12 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.6.2](https://github.com/perfect-panel/frontend/compare/v1.6.1...v1.6.2) (2026-05-21)
+
+### 🐛 Bug Fixes / 问题修复
+
+* **server:** disable retry on node config fetch and show inline error ([#62](https://github.com/perfect-panel/frontend/issues/62)) ([819a4ac](https://github.com/perfect-panel/frontend/commit/819a4ac9e2deef632f8e2e84ac221aa25d7df4ff)), closes [#61](https://github.com/perfect-panel/frontend/issues/61)
+
 ## [1.6.1](https://github.com/perfect-panel/frontend/compare/v1.6.0...v1.6.1) (2026-05-21)
 
 ### 🐛 Bug Fixes / 问题修复
