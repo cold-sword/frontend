@@ -3,7 +3,7 @@ name: Weekly Merge develop → main
 on:
   schedule:
     - cron: '0 2 * * 1' # Every Monday 02:00 UTC
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch:
 
 jobs:
   merge:
@@ -21,10 +21,10 @@ jobs:
           git config user.name "web-ppanel"
           git config user.email "web@ppanel.dev"
 
-      - name: Merge develop into main
+      - name: Merge develop into main (develop wins on conflict)
         run: |
           git fetch origin develop
-          git merge origin/develop --no-edit
+          git merge origin/develop --no-edit -X theirs
 
       - name: Push
         run: git push origin main
