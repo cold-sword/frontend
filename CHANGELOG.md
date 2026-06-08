@@ -19,6 +19,21 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.7.0](https://github.com/perfect-panel/frontend/compare/v1.6.5...v1.7.0) (2026-06-08)
+
+### ✨ Features / 新功能
+
+* **subscribe:** admin toggle to show/hide the user tutorial section ([#75](https://github.com/perfect-panel/frontend/issues/75)) ([b1ad250](https://github.com/perfect-panel/frontend/commit/b1ad25075de08126dbbe5c5b99401cd9e1d097ae)), closes [perfect-panel/server#151](https://github.com/perfect-panel/server/issues/151)
+
+### 🐛 Bug Fixes / 问题修复
+
+* **user:** add clearUserLoading to GlobalStore interface ([dcdd984](https://github.com/perfect-panel/frontend/commit/dcdd984073c9c489d8a6704dc105984335abfbee))
+* **user:** properly handle user loading state for navigation ([d826e4a](https://github.com/perfect-panel/frontend/commit/d826e4af638238301e90ccf44617825933319264)), closes [#74](https://github.com/perfect-panel/frontend/issues/74)
+
+### 🔧 Chores / 其他变更
+
+* **release:** Release 1.6.4-dev.1 / 发布版本 1.6.4-dev.1 [skip ci] ([a087bae](https://github.com/perfect-panel/frontend/commit/a087bae953449df3dfd3326881590e5a989120f6))
+
 ## [1.6.5](https://github.com/perfect-panel/frontend/compare/v1.6.4...v1.6.5) (2026-06-08)
 
 ### 🐛 Bug Fixes / 问题修复
