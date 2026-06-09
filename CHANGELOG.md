@@ -19,6 +19,12 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.7.1](https://github.com/perfect-panel/frontend/compare/v1.7.0...v1.7.1) (2026-06-09)
+
+### 🐛 Bug Fixes / 问题修复
+
+* **user:** remove non-existent menu namespace from sidebar i18n ([f920d9f](https://github.com/perfect-panel/frontend/commit/f920d9f220fc000c4ca59bfc9fe4e091d7195d91)), closes [#78](https://github.com/perfect-panel/frontend/issues/78)
+
 ## [1.7.0](https://github.com/perfect-panel/frontend/compare/v1.6.5...v1.7.0) (2026-06-08)
 
 ### ✨ Features / 新功能
