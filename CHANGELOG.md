@@ -19,6 +19,12 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.7.3](https://github.com/perfect-panel/frontend/compare/v1.7.2...v1.7.3) (2026-06-10)
+
+### 🐛 Bug Fixes / 问题修复
+
+* **user:** disable recharge when no payment methods available ([7961408](https://github.com/perfect-panel/frontend/commit/796140809d01e7b5f4e28cb66cd5d03368f47f85)), closes [#79](https://github.com/perfect-panel/frontend/issues/79)
+
 ## [1.7.2](https://github.com/perfect-panel/frontend/compare/v1.7.1...v1.7.2) (2026-06-09)
 
 ### 🐛 Bug Fixes / 问题修复
