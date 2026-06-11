@@ -19,6 +19,12 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.7.4](https://github.com/perfect-panel/frontend/compare/v1.7.3...v1.7.4) (2026-06-11)
+
+### 🐛 Bug Fixes / 问题修复
+
+* **user:** prevent redirect when import button generates plain HTTP URLs ([7a7658a](https://github.com/perfect-panel/frontend/commit/7a7658a1fac3016690555a059a19da8c58f1aef9)), closes [#82](https://github.com/perfect-panel/frontend/issues/82)
+
 ## [1.7.3](https://github.com/perfect-panel/frontend/compare/v1.7.2...v1.7.3) (2026-06-10)
 
 ### 🐛 Bug Fixes / 问题修复
