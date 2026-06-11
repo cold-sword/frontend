@@ -27,7 +27,8 @@
       "subscribeUrlQx": "Quantumult X 专用（add-resource）",
       "siteName": "站点名称",
       "siteNameEncoded": "站点名称（URL 编码）",
-      "example": "示例：clash://install-config?url={{subscribe_url_encoded}}"
+      "example": "示例：clash://install-config?url={{subscribe_url_encoded}}",
+      "ifSubscribed": "条件块：包起来的内容只对有套餐（active 订阅）的用户显示（反向用 {{#if_not_subscribed}}…{{/if_not_subscribed}}）。"
     }
   },
   "show": "显示",

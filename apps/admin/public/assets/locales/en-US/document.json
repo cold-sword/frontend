@@ -27,7 +27,8 @@
       "subscribeUrlQx": "For Quantumult X add-resource",
       "siteName": "Site name",
       "siteNameEncoded": "Site name (URL-encoded)",
-      "example": "Example: clash://install-config?url={{subscribe_url_encoded}}"
+      "example": "Example: clash://install-config?url={{subscribe_url_encoded}}",
+      "ifSubscribed": "Conditional block: shows the wrapped content only to users with an active subscription (use {{#if_not_subscribed}}…{{/if_not_subscribed}} for the opposite)."
     }
   },
   "show": "Show",

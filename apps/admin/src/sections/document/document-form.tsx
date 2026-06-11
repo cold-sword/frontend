@@ -217,6 +217,17 @@ export default function DocumentForm<T extends Record<string, any>>({
                             "Example: clash://install-config?url={{subscribe_url_encoded}}"
                           )}
                         </div>
+                        <div className="flex items-start gap-2 pt-1">
+                          <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-foreground">
+                            {"{{#if_subscribed}}…{{/if_subscribed}}"}
+                          </code>
+                          <span>
+                            {t(
+                              "form.variables.ifSubscribed",
+                              "Conditional block: shows the wrapped content only to users with an active subscription (use {{#if_not_subscribed}}…{{/if_not_subscribed}} for the opposite)."
+                            )}
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <FormMessage />
