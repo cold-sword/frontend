@@ -19,7 +19,7 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
-## [1.8.0](https://github.com/perfect-panel/frontend/compare/v1.7.4...v1.8.0) (2026-06-20)
+## [1.8.0-dev.1](https://github.com/perfect-panel/frontend/compare/v1.7.4...v1.8.0-dev.1) (2026-06-20)
 
 ### ✨ Features / 新功能
 
