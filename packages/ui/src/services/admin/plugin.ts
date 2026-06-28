@@ -86,11 +86,25 @@ export interface PluginValidation {
   error?: string;
 }
 
+export interface PluginInstallResult {
+  name: string;
+  replaced: boolean;
+  enabled: boolean;
+  status: PluginStatus;
+  plugin: PluginInfo;
+  validation: PluginValidation;
+}
+
 export interface GetPluginListParams {
   page?: number;
   size?: number;
   status?: string;
   q?: string;
+}
+
+export interface UploadPluginOptions {
+  replace?: boolean;
+  enable?: boolean;
 }
 
 const prefix = `${import.meta.env.VITE_API_PREFIX || ""}/v1/admin/plugins`;
@@ -230,6 +244,26 @@ export async function reloadAllPlugins(options?: { [key: string]: unknown }) {
     `${prefix}/reload-all`,
     {
       method: "POST",
+      ...(options || {}),
+    }
+  );
+}
+
+export async function uploadPluginPackage(
+  file: File,
+  body: UploadPluginOptions = {},
+  options?: { [key: string]: unknown }
+) {
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("replace", body.replace ? "true" : "false");
+  formData.append("enable", body.enable ? "true" : "false");
+
+  return request<API.Response & { data?: PluginInstallResult }>(
+    `${prefix}/upload`,
+    {
+      method: "POST",
+      data: formData,
       ...(options || {}),
     }
   );

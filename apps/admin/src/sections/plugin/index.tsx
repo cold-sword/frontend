@@ -1,12 +1,17 @@
 import { Badge } from "@workspace/ui/components/badge";
 import { Button } from "@workspace/ui/components/button";
+import { Checkbox } from "@workspace/ui/components/checkbox";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@workspace/ui/components/dialog";
+import { Input } from "@workspace/ui/components/input";
+import { Label } from "@workspace/ui/components/label";
 import { ScrollArea } from "@workspace/ui/components/scroll-area";
 import { Separator } from "@workspace/ui/components/separator";
 import { ConfirmButton } from "@workspace/ui/composed/confirm-button";
@@ -32,11 +37,19 @@ import {
   type PluginStatus,
   reloadAllPlugins,
   restartPlugin,
+  uploadPluginPackage,
   validatePlugin,
 } from "@workspace/ui/services/admin/plugin";
-import { CheckCircle2, Eye, Power, PowerOff, RotateCcw } from "lucide-react";
+import {
+  CheckCircle2,
+  Eye,
+  Power,
+  PowerOff,
+  RotateCcw,
+  Upload,
+} from "lucide-react";
 import type React from "react";
-import { useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
@@ -65,6 +78,8 @@ export default function PluginManagement() {
   const tableRef = useRef<ProTableActions>(null);
 
   const refresh = () => tableRef.current?.refresh();
+  const getStatusLabel = (status: PluginStatus) =>
+    t(`statusLabels.${status}`, status);
 
   return (
     <ProTable<PluginInfo, { q?: string; status?: string }>
@@ -160,7 +175,7 @@ export default function PluginManagement() {
           header: t("status", "Status"),
           cell: ({ row }) => (
             <Badge variant={statusVariant[row.original.status] || "outline"}>
-              {row.original.status}
+              {getStatusLabel(row.original.status)}
             </Badge>
           ),
         },
@@ -231,26 +246,29 @@ export default function PluginManagement() {
       header={{
         title: t("title", "Plugins"),
         toolbar: (
-          <ConfirmButton
-            cancelText={t("cancel", "Cancel")}
-            confirmText={t("confirm", "Confirm")}
-            description={t(
-              "reloadAllDescription",
-              "All running plugin instances will be stopped, the plugin directory will be scanned again, and allowed plugins will be loaded."
-            )}
-            onConfirm={async () => {
-              await reloadAllPlugins();
-              toast.success(t("reloadAllCompleted", "Reloaded plugins"));
-              refresh();
-            }}
-            title={t("reloadAllTitle", "Reload all plugins?")}
-            trigger={
-              <Button variant="outline">
-                <RotateCcw />
-                {t("reloadAll", "Reload all")}
-              </Button>
-            }
-          />
+          <div className="flex flex-wrap items-center gap-2">
+            <PluginUploadDialog onUploaded={refresh} />
+            <ConfirmButton
+              cancelText={t("cancel", "Cancel")}
+              confirmText={t("confirm", "Confirm")}
+              description={t(
+                "reloadAllDescription",
+                "All running plugin instances will be stopped, the plugin directory will be scanned again, and allowed plugins will be loaded."
+              )}
+              onConfirm={async () => {
+                await reloadAllPlugins();
+                toast.success(t("reloadAllCompleted", "Reloaded plugins"));
+                refresh();
+              }}
+              title={t("reloadAllTitle", "Reload all plugins?")}
+              trigger={
+                <Button variant="outline">
+                  <RotateCcw />
+                  {t("reloadAll", "Reload all")}
+                </Button>
+              }
+            />
+          </div>
         ),
       }}
       params={[
@@ -284,10 +302,163 @@ export default function PluginManagement() {
   );
 }
 
+function PluginUploadDialog({ onUploaded }: { onUploaded: () => void }) {
+  const { t } = useTranslation("plugin");
+  const inputId = useId();
+  const [open, setOpen] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+  const [replace, setReplace] = useState(false);
+  const [enable, setEnable] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
+  const reset = () => {
+    setFile(null);
+    setReplace(false);
+    setEnable(false);
+    setUploading(false);
+  };
+
+  const handleUpload = async () => {
+    if (!file) {
+      toast.error(t("selectPackageFirst", "Please select a plugin package"));
+      return;
+    }
+    setUploading(true);
+    try {
+      const { data } = await uploadPluginPackage(file, { replace, enable });
+      const result = data.data;
+      if (result?.validation && !result.validation.valid) {
+        toast.error(
+          result.validation.error ||
+            t(
+              "uploadCompletedValidationFailed",
+              "Plugin uploaded, but validation did not pass"
+            )
+        );
+      } else {
+        toast.success(t("uploadCompleted", "Plugin uploaded"));
+      }
+      setOpen(false);
+      reset();
+      onUploaded();
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <Dialog
+      onOpenChange={(nextOpen) => {
+        setOpen(nextOpen);
+        if (!nextOpen) {
+          reset();
+        }
+      }}
+      open={open}
+    >
+      <DialogTrigger asChild>
+        <Button>
+          <Upload />
+          {t("uploadPlugin", "Upload plugin")}
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>{t("uploadPlugin", "Upload plugin")}</DialogTitle>
+          <DialogDescription>
+            {t(
+              "uploadDescription",
+              "Upload a zip package that contains plugin.yaml and the WASM module."
+            )}
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4">
+          <div className="grid gap-2">
+            <Label htmlFor={inputId}>{t("packageFile", "Package file")}</Label>
+            <Input
+              accept=".zip,application/zip,application/x-zip-compressed"
+              id={inputId}
+              onChange={(event) => setFile(event.target.files?.[0] || null)}
+              type="file"
+            />
+            <p className="text-muted-foreground text-xs">
+              {file
+                ? t("selectedPackage", "Selected: {{name}}", {
+                    name: file.name,
+                  })
+                : t("packageHint", "Only .zip plugin packages are supported.")}
+            </p>
+          </div>
+
+          <div className="grid gap-3">
+            <div className="flex items-start gap-3 rounded-md border p-3">
+              <Checkbox
+                checked={replace}
+                id={`${inputId}-replace`}
+                onCheckedChange={(checked) => setReplace(checked === true)}
+              />
+              <div className="grid gap-1">
+                <Label htmlFor={`${inputId}-replace`}>
+                  {t("replaceExisting", "Replace existing plugin")}
+                </Label>
+                <p className="text-muted-foreground text-xs">
+                  {t(
+                    "replaceExistingDescription",
+                    "If a plugin with the same manifest name exists, stop it and replace its files."
+                  )}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 rounded-md border p-3">
+              <Checkbox
+                checked={enable}
+                id={`${inputId}-enable`}
+                onCheckedChange={(checked) => setEnable(checked === true)}
+              />
+              <div className="grid gap-1">
+                <Label htmlFor={`${inputId}-enable`}>
+                  {t("enableAfterUpload", "Enable after upload")}
+                </Label>
+                <p className="text-muted-foreground text-xs">
+                  {t(
+                    "enableAfterUploadDescription",
+                    "Load the uploaded WASM plugin immediately after installation."
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <DialogFooter>
+          <Button
+            disabled={uploading}
+            onClick={() => setOpen(false)}
+            type="button"
+            variant="outline"
+          >
+            {t("cancel", "Cancel")}
+          </Button>
+          <Button
+            disabled={!file || uploading}
+            onClick={handleUpload}
+            type="button"
+          >
+            <Upload />
+            {uploading ? t("uploading", "Uploading...") : t("upload", "Upload")}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 function PluginDetailDialog({ plugin }: { plugin: PluginInfo }) {
   const { t } = useTranslation("plugin");
   const [open, setOpen] = useState(false);
   const [detail, setDetail] = useState<PluginDetailData | null>(null);
+  const getStatusLabel = (status: PluginStatus) =>
+    t(`statusLabels.${status}`, status);
 
   const loadDetail = async () => {
     const [manifest, health, routes, middlewares, events] = await Promise.all([
@@ -331,7 +502,7 @@ function PluginDetailDialog({ plugin }: { plugin: PluginInfo }) {
             <section className="grid gap-3">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge variant={statusVariant[plugin.status] || "outline"}>
-                  {plugin.status}
+                  {getStatusLabel(plugin.status)}
                 </Badge>
                 <span className="text-muted-foreground text-sm">
                   {plugin.version || "-"}
