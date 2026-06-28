@@ -19,6 +19,12 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.9.2-dev.1](https://github.com/perfect-panel/frontend/compare/v1.9.1...v1.9.2-dev.1) (2026-06-28)
+
+### 🐛 Bug Fixes / 问题修复
+
+* prioritize mobile device detection in getPlatform() ([388630c](https://github.com/perfect-panel/frontend/commit/388630cb5dcc4334c07d29413ce8c8582ae5d3db)), closes [#96](https://github.com/perfect-panel/frontend/issues/96)
+
 ## [1.9.1](https://github.com/perfect-panel/frontend/compare/v1.9.0...v1.9.1) (2026-06-21)
 
 ### 🐛 Bug Fixes / 问题修复
