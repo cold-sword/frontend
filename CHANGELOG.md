@@ -19,6 +19,12 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.9.2-dev.2](https://github.com/perfect-panel/frontend/compare/v1.9.2-dev.1...v1.9.2-dev.2) (2026-06-28)
+
+### 🐛 Bug Fixes / 问题修复
+
+* correctly detect iOS devices requesting desktop site ([2d1798d](https://github.com/perfect-panel/frontend/commit/2d1798df66c33005db6cf80ee63b152bbb25970b)), closes [#96](https://github.com/perfect-panel/frontend/issues/96)
+
 ## [1.9.2-dev.1](https://github.com/perfect-panel/frontend/compare/v1.9.1...v1.9.2-dev.1) (2026-06-28)
 
 ### 🐛 Bug Fixes / 问题修复
