@@ -19,17 +19,12 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
-## [1.9.2-dev.2](https://github.com/perfect-panel/frontend/compare/v1.9.2-dev.1...v1.9.2-dev.2) (2026-06-28)
+## [1.10.0](https://github.com/perfect-panel/frontend/compare/v1.9.1...v1.10.0) (2026-06-28)
 
-### 🐛 Bug Fixes / 问题修复
+### ✨ Features / 新功能
 
-* correctly detect iOS devices requesting desktop site ([2d1798d](https://github.com/perfect-panel/frontend/commit/2d1798df66c33005db6cf80ee63b152bbb25970b)), closes [#96](https://github.com/perfect-panel/frontend/issues/96)
-
-## [1.9.2-dev.1](https://github.com/perfect-panel/frontend/compare/v1.9.1...v1.9.2-dev.1) (2026-06-28)
-
-### 🐛 Bug Fixes / 问题修复
-
-* prioritize mobile device detection in getPlatform() ([388630c](https://github.com/perfect-panel/frontend/commit/388630cb5dcc4334c07d29413ce8c8582ae5d3db)), closes [#96](https://github.com/perfect-panel/frontend/issues/96)
+* add plugin management page ([6a6f9e3](https://github.com/perfect-panel/frontend/commit/6a6f9e3f145909efa6fdd13b4559e978f59f5fab))
+* add plugin upload controls ([c91a87b](https://github.com/perfect-panel/frontend/commit/c91a87b0c4eb5b20154d31626a497567caa5fced))
 
 ## [1.9.1](https://github.com/perfect-panel/frontend/compare/v1.9.0...v1.9.1) (2026-06-21)
 
