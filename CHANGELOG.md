@@ -19,11 +19,13 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
-## [1.10.1-dev.2](https://github.com/perfect-panel/frontend/compare/v1.10.1-dev.1...v1.10.1-dev.2) (2026-07-10)
+## [1.10.2](https://github.com/perfect-panel/frontend/compare/v1.10.1...v1.10.2) (2026-07-10)
 
 ### 🐛 Bug Fixes / 问题修复
 
-* unblock frontend release workflow ([e9ed6ea](https://github.com/perfect-panel/frontend/commit/e9ed6eac8f780277b291dfcfddab43babf81a8b6))
+* **auth:** align Telegram admin form fields with backend config ([69bc1ad](https://github.com/perfect-panel/frontend/commit/69bc1ade0f18a43e563aa01568ef10d514adbac1))
+* trigger frontend release ([b0184f8](https://github.com/perfect-panel/frontend/commit/b0184f85bb4586969fe4a561d285f7271b546f1f))
+* unblock frontend release workflow ([2a41d35](https://github.com/perfect-panel/frontend/commit/2a41d355ba323141ea392e2058a49c9dc998a9f6))
 
 ## [1.10.1-dev.1](https://github.com/perfect-panel/frontend/compare/v1.10.0...v1.10.1-dev.1) (2026-07-07)
 
