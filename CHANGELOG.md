@@ -19,6 +19,14 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.11.0-dev.3](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.2...v1.11.0-dev.3) (2026-07-16)
+
+### 🐛 Bug Fixes / 问题修复
+
+* add commission withdrawal entry ([8f47f56](https://github.com/perfect-panel/frontend/commit/8f47f56cadf0c3cecc53ad2f8903fe26b2a7ae57))
+* **admin:** add ticket status filter options ([26bd632](https://github.com/perfect-panel/frontend/commit/26bd63204336b97483aaa0c5b4e3030e9c7cc45b))
+* **ui:** remove unsupported 200 page size ([936c120](https://github.com/perfect-panel/frontend/commit/936c12000d5ea05be7b42d94b5608a795e6df3e6))
+
 ## [1.11.0-dev.2](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.1...v1.11.0-dev.2) (2026-07-14)
 
 ### 🐛 Bug Fixes / 问题修复
