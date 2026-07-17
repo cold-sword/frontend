@@ -19,6 +19,16 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.11.0-dev.5](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.4...v1.11.0-dev.5) (2026-07-17)
+
+### 🐛 Bug Fixes / 问题修复
+
+* **admin:** apply order user filter from URL ([de18e06](https://github.com/perfect-panel/frontend/commit/de18e062193dae4d62e9d7f230553cacb63e1768))
+
+### 🔧 Chores / 其他变更
+
+* sync version with main ([995b45e](https://github.com/perfect-panel/frontend/commit/995b45e7936978fc2112ada0faac38f1628d2487))
+
 ## [1.11.0-dev.4](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.3...v1.11.0-dev.4) (2026-07-16)
 
 ### 🐛 Bug Fixes / 问题修复
