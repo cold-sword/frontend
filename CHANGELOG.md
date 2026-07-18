@@ -19,6 +19,12 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
+## [1.11.0-dev.6](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.5...v1.11.0-dev.6) (2026-07-18)
+
+### 🐛 Bug Fixes / 问题修复
+
+* keep email broadcast interval in seconds ([3338d35](https://github.com/perfect-panel/frontend/commit/3338d353f400cd693e6d5699a96fa604b832f2ee))
+
 ## [1.11.0-dev.5](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.4...v1.11.0-dev.5) (2026-07-17)
 
 ### 🐛 Bug Fixes / 问题修复
