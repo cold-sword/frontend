@@ -19,37 +19,11 @@ This document records all notable changes to ShadCN Admin.
 ---
 
 
-## [1.11.0-dev.6](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.5...v1.11.0-dev.6) (2026-07-18)
+## [1.11.0](https://github.com/perfect-panel/frontend/compare/v1.10.4...v1.11.0) (2026-07-14)
 
-### 🐛 Bug Fixes / 问题修复
+### ✨ Features / 新功能
 
-* keep email broadcast interval in seconds ([3338d35](https://github.com/perfect-panel/frontend/commit/3338d353f400cd693e6d5699a96fa604b832f2ee))
-
-## [1.11.0-dev.5](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.4...v1.11.0-dev.5) (2026-07-17)
-
-### 🐛 Bug Fixes / 问题修复
-
-* **admin:** apply order user filter from URL ([de18e06](https://github.com/perfect-panel/frontend/commit/de18e062193dae4d62e9d7f230553cacb63e1768))
-
-### 🔧 Chores / 其他变更
-
-* sync version with main ([995b45e](https://github.com/perfect-panel/frontend/commit/995b45e7936978fc2112ada0faac38f1628d2487))
-
-## [1.11.0-dev.4](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.3...v1.11.0-dev.4) (2026-07-16)
-
-### 🐛 Bug Fixes / 问题修复
-
-* **admin:** copy server node config ([c812c90](https://github.com/perfect-panel/frontend/commit/c812c90a7658e28756ca287d7493064448834de5))
-
-## [1.11.0-dev.3](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.2...v1.11.0-dev.3) (2026-07-16)
-
-### 🐛 Bug Fixes / 问题修复
-
-* add commission withdrawal entry ([8f47f56](https://github.com/perfect-panel/frontend/commit/8f47f56cadf0c3cecc53ad2f8903fe26b2a7ae57))
-* **admin:** add ticket status filter options ([26bd632](https://github.com/perfect-panel/frontend/commit/26bd63204336b97483aaa0c5b4e3030e9c7cc45b))
-* **ui:** remove unsupported 200 page size ([936c120](https://github.com/perfect-panel/frontend/commit/936c12000d5ea05be7b42d94b5608a795e6df3e6))
-
-## [1.11.0-dev.2](https://github.com/perfect-panel/frontend/compare/v1.11.0-dev.1...v1.11.0-dev.2) (2026-07-14)
+* support subscription token user search ([1884b36](https://github.com/perfect-panel/frontend/commit/1884b3609dcd746110f09c30889a7c6a5a959e5d))
 
 ### 🐛 Bug Fixes / 问题修复
 
@@ -59,6 +33,10 @@ This document records all notable changes to ShadCN Admin.
 ### 👷 Continuous Integration / CI/CD
 
 * trigger release workflow on published releases ([700fc05](https://github.com/perfect-panel/frontend/commit/700fc05ebc1fc71cbffd2227ae4a3cc5ba0bb5dc))
+
+### 🔧 Chores / 其他变更
+
+* **release:** Release 1.11.0-dev.1 / 发布版本 1.11.0-dev.1 [skip ci] ([6ee8d96](https://github.com/perfect-panel/frontend/commit/6ee8d9679de0534e0715b238db0a5bee7fa373f2))
 
 ## [1.11.0-dev.1](https://github.com/perfect-panel/frontend/compare/v1.10.2...v1.11.0-dev.1) (2026-07-14)
 
