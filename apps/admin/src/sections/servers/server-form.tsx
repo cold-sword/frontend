@@ -44,7 +44,7 @@ import { EnhancedInput } from "@workspace/ui/composed/enhanced-input";
 import { Icon } from "@workspace/ui/composed/icon";
 import { cn } from "@workspace/ui/lib/utils";
 import { useEffect, useState } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { type Resolver, useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { useNode } from "@/stores/node";
@@ -79,6 +79,37 @@ function getVisibleRequiredFields(
     (field) =>
       field.required && (!field.condition || field.condition(protocolData, {}))
   );
+}
+
+function normalizeMultiplexValue(
+  protocolType: ProtocolType,
+  value: unknown,
+  fallback: unknown
+) {
+  const raw = String(value || fallback || "").trim();
+  if (protocolType !== "mieru") {
+    return raw || "none";
+  }
+
+  switch (raw.toUpperCase()) {
+    case "NONE":
+    case "OFF":
+    case "MULTIPLEXING_OFF":
+      return "MULTIPLEXING_OFF";
+    case "":
+    case "LOW":
+    case "MULTIPLEXING_LOW":
+      return "MULTIPLEXING_LOW";
+    case "MIDDLE":
+    case "MEDIUM":
+    case "MULTIPLEXING_MIDDLE":
+      return "MULTIPLEXING_MIDDLE";
+    case "HIGH":
+    case "MULTIPLEXING_HIGH":
+      return "MULTIPLEXING_HIGH";
+    default:
+      return raw;
+  }
 }
 
 function DynamicField({
@@ -237,7 +268,10 @@ function DynamicField({
                   onValueChange={(value) => {
                     fieldProps.onChange(value);
                     if (field.name === "security") {
-                      if (value === "tls" && protocolData.cert_mode === "none") {
+                      if (
+                        value === "tls" &&
+                        protocolData.cert_mode === "none"
+                      ) {
                         form.setValue(
                           `protocols.${protocolIndex}.cert_mode`,
                           "self"
@@ -471,8 +505,10 @@ export default function ServerForm(props: {
   const { isProtocolUsedInNodes } = useNode();
   const PROTOCOL_FIELDS = useProtocolFields();
 
-  const form = useForm({
-    resolver: zodResolver(formSchema),
+  const form = useForm<Record<string, any>>({
+    resolver: zodResolver(formSchema) as unknown as Resolver<
+      Record<string, any>
+    >,
     defaultValues: {
       name: "",
       address: "",
@@ -512,9 +548,13 @@ export default function ServerForm(props: {
                 ? "ws"
                 : existingProtocol.transport,
             plugin: existingProtocol.plugin || "none",
-            multiplex: existingProtocol.multiplex || "none",
+            multiplex: normalizeMultiplexValue(
+              type,
+              existingProtocol.multiplex,
+              defaultConfig.multiplex
+            ),
           };
-          if (["hysteria2", "tuic", "naive"].includes(type)) {
+          if (["hysteria2", "tuic", "naive", "trojan"].includes(type)) {
             merged.security = "tls";
             if (!merged.cert_mode || merged.cert_mode === "none") {
               merged.cert_mode = "self";
@@ -640,8 +680,7 @@ export default function ServerForm(props: {
           fieldNames.filter((name) => {
             const sameName = fields.filter((field) => field.name === name);
             return sameName.every(
-              (field) =>
-                field.condition && !field.condition(protocol, {})
+              (field) => field.condition && !field.condition(protocol, {})
             );
           })
         );
@@ -655,11 +694,11 @@ export default function ServerForm(props: {
           })
         );
         if (normalized.plugin === "none") {
-          delete normalized.plugin;
-          delete normalized.plugin_opts;
+          normalized.plugin = undefined;
+          normalized.plugin_opts = undefined;
         }
         if (normalized.multiplex === "none") {
-          delete normalized.multiplex;
+          normalized.multiplex = undefined;
         }
         return normalized;
       });
