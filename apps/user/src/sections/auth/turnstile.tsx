@@ -31,14 +31,14 @@ const CloudFlareTurnstile = function CloudFlareTurnstile({
   useImperativeHandle(
     ref,
     () => ({
-      reset: () => turnstile.reset(),
+      reset: () => turnstile?.reset(),
     }),
     [turnstile]
   );
 
   useEffect(() => {
     if (value === "") {
-      turnstile.reset();
+      turnstile?.reset();
     }
   }, [turnstile, value]);
 
@@ -50,16 +50,16 @@ const CloudFlareTurnstile = function CloudFlareTurnstile({
         language={locale.toLowerCase()}
         onExpire={() => {
           onChange();
-          turnstile.reset();
+          turnstile?.reset();
         }}
         onTimeout={() => {
           onChange();
-          turnstile.reset();
+          turnstile?.reset();
         }}
         onVerify={(token) => onChange(token)}
         // onError={() => {
         //   onChange();
-        //   turnstile.reset();
+        //   turnstile?.reset();
         // }}
         sitekey={verify.turnstile_site_key}
         theme={resolvedTheme as "light" | "dark"}
